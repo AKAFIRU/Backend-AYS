@@ -4,6 +4,8 @@
  */
 package pe.edu.upeu.Spring.Controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,33 +26,40 @@ import pe.edu.upeu.Spring.entity.Programa;
  */
 
 @RestController
+@Api(value = "Microservicio de Gestion de persona", description = "Microservicio de Gestion de persona")
 @RequestMapping("/programa")
 public class ProgramaController {
 
     @Autowired
     private ProgramaService programaService;
 
+
+    @ApiOperation(value = "Lista de taller")
     @GetMapping("/all")
     public List<Programa> findAll() {
         return programaService.findAll();
     }
 
+    @ApiOperation(value = "Obtienes datos de taller")
     @GetMapping("/{id}")
     public ResponseEntity<Programa> findById(@PathVariable Long id) {
         Programa programa = programaService.findById(id);
         return ResponseEntity.ok(programa);
     }
 
+    @ApiOperation(value = "Elimina un taller")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         programaService.deleteById(id);
     }
 
+    @ApiOperation(value = "Crea un taller")
     @PostMapping("/save")
     public Programa save(@RequestBody Programa programa) {
         return programaService.save(programa);
     }
 
+    @ApiOperation(value = "Modifica una persona")
     @PutMapping("/update")
     public Programa update(@RequestBody Programa programa) {
         return programaService.save(programa);
