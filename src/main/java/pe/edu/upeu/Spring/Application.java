@@ -21,7 +21,8 @@ public class Application {
 public Docket productApi () {
     return new Docket (DocumentationType.SWAGGER_2).select()
 .apis(RequestHandlerSelectors.basePackage("pe.edu.upeu")).build();
-
+///sadasffdsfs
 }
 }
 
+//pepepepepepep//
