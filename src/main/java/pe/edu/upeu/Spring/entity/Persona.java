@@ -41,6 +41,8 @@ private String persCelular;
 @Column(name = "pers_correo")
 private String persCorreo; 
 
+@Column(name = "pers_dni")
+    private String persDni;
 
 
 

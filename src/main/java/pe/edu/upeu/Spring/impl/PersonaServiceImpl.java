@@ -11,17 +11,21 @@ import pe.edu.upeu.Spring.Service.PersonaService;
 import pe.edu.upeu.Spring.entity.Persona;
 import pe.edu.upeu.Spring.repository.PersonaRepository;
 
+
+
 /**
  *
  * @author HP
  */
 @Service
-public class PersonaServiceImpl implements PersonaService{
+public class PersonaServiceImpl implements PersonaService {
 
 
 
 @Autowired   
 PersonaRepository personaRepository;
+
+@Override
 public List<Persona> findAll() {
         return (List<Persona>) personaRepository.findAll();
     }
@@ -32,6 +36,11 @@ public List<Persona> findAll() {
         return personaRepository.findById(id).orElse(null);
     
     }
+    @Override
+    public Persona findByPersDni(String persDni) {
+        return personaRepository.findByPersDni(persDni);
+}
+
     @Override
     public Persona save(Persona persona) {
         return personaRepository.save(persona);

@@ -17,6 +17,8 @@ public List<Persona> findAll();
 
 public Persona findById( Long id);
 
+public Persona findByPersDni(String persDni);
+
 public Persona save (Persona persona);
 
 public void delete (Persona persona);
