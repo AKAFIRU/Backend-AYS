@@ -7,16 +7,16 @@ package pe.edu.upeu.Spring.repository;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upeu.Spring.entity.Persona;
+import pe.edu.upeu.Spring.entity.PersonaTaller;
+import pe.edu.upeu.Spring.entity.Taller;
 
 /**
  *
  * @author HP
  */
 @Repository
-public interface PersonaRepository extends CrudRepository<Persona, Long>{
+public interface PersonaTallerRepository extends CrudRepository<PersonaTaller, Long> {
 
-    Persona findByPersDni(String persDni);
-
-    
+    List<PersonaTaller> findByTaller(Taller taller);
 }
+

@@ -29,7 +29,7 @@ import pe.edu.upeu.Spring.entity.Programa;
  */
 @CrossOrigin(origins = ("http://localhost:4200/"))
 @RestController
-@Api(value = "Microservicio de Gestion de persona", description = "Microservicio de Gestion de persona")
+@Api(value = "Microservicio de Gestion de programa", description = "Microservicio de Gestion de programa")
 @RequestMapping("/programa")
 public class ProgramaController {
 
