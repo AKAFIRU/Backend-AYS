@@ -6,9 +6,12 @@ package pe.edu.upeu.Spring.Controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.util.List;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +27,7 @@ import pe.edu.upeu.Spring.entity.Programa;
  *
  * @author HP
  */
-
+@CrossOrigin(origins = ("http://localhost:4200/"))
 @RestController
 @Api(value = "Microservicio de Gestion de persona", description = "Microservicio de Gestion de persona")
 @RequestMapping("/programa")
@@ -35,9 +38,15 @@ public class ProgramaController {
 
 
     @ApiOperation(value = "Lista de taller")
-    @GetMapping("/all")
-    public List<Programa> findAll() {
-        return programaService.findAll();
+    @GetMapping()
+    public ResponseEntity<?> findAll() {
+        HashMap<String, Object> result = new HashMap<>();
+result.put("success", true);
+result.put("message", "Lista de programas");
+result.put("data", programaService.findAll());
+
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @ApiOperation(value = "Obtienes datos de taller")
