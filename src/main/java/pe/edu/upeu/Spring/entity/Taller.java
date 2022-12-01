@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -29,24 +30,28 @@ public class Taller implements Serializable {
     @Column(name = "tall_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tallId;
-
+    
     @Column(name = "tall_tema")
     private String tallTema;
-
+    
+    @Column(name = "ta_desc")
+    private String tallDesc;
+    
     @Column(name = "tall_fecha")
-    //@DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date tallFecha;
-
+    
     @Column(name = "tall_hora")
     private String tallHora;
-
-    @Column(name = "tall_lugar")
+    
+    @Column(name = "tall_hora_academicas")
+    private String tallHoraAcademicas;
+    
+    @Column (name = "tall_lugar")
     private String tallLugar;
-
-    @Column(name = "tall_direccion")
-    private String tallDireccion;
-
+    
     @ManyToOne
     @JoinColumn(name = "prog_id")
     private Programa programa;
+    
 }
