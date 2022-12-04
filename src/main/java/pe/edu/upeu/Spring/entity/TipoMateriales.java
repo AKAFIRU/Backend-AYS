@@ -4,7 +4,6 @@
  */
 package pe.edu.upeu.Spring.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,27 +12,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "asistencia")
-public class Asistencia implements Serializable{
+@Data
+@Table(name = "tipo_materiales")
+public class TipoMateriales {
     
     @Id
-    @Column(name = "asis_id")
+    @Column(name = "tm_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long asisId;
+    private Long tmId;
     
-    @Column(name="asis_nombre")
-    private String asisName;
+    @Column(name = "tm_name")
+    private String tmName;
     
-    @Column(name ="asis_Apellidos")
-    private String asisApellidos;
-    
-    @Column(name="asisCodigo")
-    private String asisCodigo;
-    
-    @Column(name = "asisDni")
-    private String AsisDNI;
+    @Column(name = "tm_desc")
+    private String tmDesc;
     
 }
-

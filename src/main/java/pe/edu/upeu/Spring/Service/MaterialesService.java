@@ -5,18 +5,17 @@
 package pe.edu.upeu.Spring.Service;
 
 import java.util.List;
-import pe.edu.upeu.Spring.entity.Asistencia;
+import pe.edu.upeu.Spring.entity.Materiales;
 
-public interface AsistenciaService {
+
+public interface MaterialesService {
+ 
     
-    public List<Asistencia> findAll();
-
-    public Asistencia findById(Long id);
-
-    public Asistencia save(Asistencia asistencia);
-
-    public void delete(Asistencia asistencia);
-
+    public List<Materiales> findAll();
+    public Materiales findById(Long id);
+    public Materiales save (Materiales materiales);
+    public void delete(Materiales materiales);
     public void deleteById(Long id);
     
 }
+

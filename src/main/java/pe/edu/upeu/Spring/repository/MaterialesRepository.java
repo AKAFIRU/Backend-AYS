@@ -6,14 +6,9 @@ package pe.edu.upeu.Spring.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upeu.Spring.entity.Asistencia;
-
-
-
+import pe.edu.upeu.Spring.entity.Materiales;
 
 @Repository
-public interface AsistenciaRepository extends CrudRepository<Asistencia, Long>{
-    
-    
+public interface MaterialesRepository extends CrudRepository<Materiales, Long>{
     
 }
