@@ -7,7 +7,6 @@ package pe.edu.upeu.Spring.Controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,84 +19,84 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.upeu.Spring.Service.TallerService;
-import pe.edu.upeu.Spring.entity.Taller;
-
+import pe.edu.upeu.Spring.Service.CarreraService;
+import pe.edu.upeu.Spring.entity.Carrera;
 
 /**
  *
- * @author trivilin
+ * @author HP
  */
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/taller")
-@Api(value = "Microservicio de Gestion de los talleres", description = "Microservicio de Gestion de los talleres")
-
-public class TallerController {
-
+@RequestMapping("/carrera")
+@Api(value = "Microservicio de Gestion de las carreras", description = "Microservicio de Gestion de las carreras")
+public class CarreraController {
+    
     @Autowired
-     TallerService tallerService;
-
- @ApiOperation(value = "Lista de Talleres")
+    CarreraService carreraService;
+    
+    @ApiOperation(value = "Lista de carreras")
     @GetMapping
     public ResponseEntity<?> findAll() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "Lista de Talleres");
-        result.put("data", tallerService.findAll());
+        result.put("message", "Lista de carreras");
+        result.put("data", carreraService.findAll());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
-   @ApiOperation(value = "Obtiene datos de una taller")
+
+    @ApiOperation(value = "Obtiene datos de carrera")
     @GetMapping("/{id}")
-    public ResponseEntity<Taller> findById(@PathVariable Long id) {
-        Taller taller = tallerService.findById(id);
-        return ResponseEntity.ok(taller);
+    public ResponseEntity<Carrera> findById(@PathVariable Long id) {
+        Carrera carrera = carreraService.findById(id);
+        return ResponseEntity.ok(carrera);
     }
+
     
-    @ApiOperation(value = "Crea una taller")
+    @ApiOperation(value = "Crea una carrera")
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Taller taller) {
+    public ResponseEntity<?> save(@RequestBody Carrera carrera) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "Taller registrado correctamente");
-        result.put("data", tallerService.save(taller));
+        result.put("message", "Carrera registrado correctamente");
+        result.put("data", carreraService.save(carrera));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
     
-    @ApiOperation(value = "Modifica una taller")
+    @ApiOperation(value = "Modifica una carrera")
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody Taller taller) {
+    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody Carrera carrera) {
         HashMap<String, Object> result = new HashMap<>();
-        Taller data = tallerService.findById(id);
+        Carrera data = carreraService.findById(id);
         if (data == null) {
             result.put("success", false);
             result.put("message", "No existe registro con Id: " + id);
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
         try {
-            taller.setTallId(id);
-            tallerService.save(taller);
+            carrera.setCaId(id);
+            carreraService.save(carrera);
             result.put("success", true);
             result.put("message", "Datos actualizados correctamente.");
-            result.put("data", taller);
+            result.put("data", carrera);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(new Exception(ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     
-    @ApiOperation(value = "Elimina un taller")
+    @ApiOperation(value = "Elimina una carrera")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         HashMap<String, Object> result = new HashMap<>();
-    Taller data = tallerService.findById(id);
+    Carrera data = carreraService.findById(id);
     if(data == null){
         result.put("success", false);
-        result.put("message", "No existe taller con id:" + id);
+        result.put("message", "No existe carrera con id:" + id);
   return new ResponseEntity <>(result, HttpStatus.NOT_FOUND);
     } else{
-  tallerService.deleteById(id);
+  carreraService.deleteById(id);
             result.put("success", true);
             result.put("message", "Registro Eliminado correctamente");
             return new ResponseEntity<>(result, HttpStatus.OK);
