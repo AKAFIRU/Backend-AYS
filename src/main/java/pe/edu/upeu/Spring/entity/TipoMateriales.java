@@ -4,14 +4,11 @@
  */
 package pe.edu.upeu.Spring.entity;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -19,27 +16,19 @@ import lombok.Data;
  *
  * @author HP
  */
-@Data
 @Entity
-@Table(name = "persona_taller")
-public class PersonaTaller implements Serializable {
-
-   
+@Data
+@Table(name = "tipo_materiales")
+public class TipoMateriales {
     @Id
-    @Column(name = "peta_id")
+    @Column(name = "tm_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long peId;
+    private Long tmId;
     
-    @Column (name = "pe_estado_asistencia")
-    private int peEstadoAsistencia;
+    @Column(name = "tm_name")
+    private String tmName;
     
-    @ManyToOne
-    @JoinColumn(name = "pe_id")
-    private Persona persona;
-    
-    @ManyToOne
-    @JoinColumn(name = "ta_id")
-    private Taller taller;
-    
+    @Column(name = "tm_desc")
+    private String tmDesc;
     
 }

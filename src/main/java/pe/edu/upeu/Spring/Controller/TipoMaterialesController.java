@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.edu.upeu.Spring.Service.PersonaTallerService;
-import pe.edu.upeu.Spring.entity.PersonaTaller;
+import pe.edu.upeu.Spring.Service.TipoMaterialesService;
+import pe.edu.upeu.Spring.entity.TipoMateriales;
 
 /**
  *
@@ -28,76 +28,75 @@ import pe.edu.upeu.Spring.entity.PersonaTaller;
  */
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/personataller")
-@Api(value = "Microservicio de Gestion de las personas en los talleres", description = "Microservicio de Gestion de las personas en los talleres")
-public class PersonaTallerController {
-    
-    @Autowired
-    PersonaTallerService personaTallerService;
+@RequestMapping("/tipomateriales")
+@Api(value = "Microservicio de Gestion del tipo de materiales", description = "Microservicio de Gestion del tipo de materiales")
+public class TipoMaterialesController {
+@Autowired
+    TipoMaterialesService tipoMaterialesService;
 
-    @ApiOperation(value = "Lista de personaTaller")
+    @ApiOperation(value = "Lista de tipoMateriales")
     @GetMapping
     public ResponseEntity<?> findAll() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "Lista de personaTaller");
-        result.put("data", personaTallerService.findAll());
+        result.put("message", "Lista de tipoMateriales");
+        result.put("data", tipoMaterialesService.findAll());
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Obtiene datos de una personaTaller")
+    @ApiOperation(value = "Obtiene datos de un tipoMateriales")
     @GetMapping("/{id}")
-    public ResponseEntity<PersonaTaller> findById(@PathVariable Long id) {
-        PersonaTaller personaTaller = personaTallerService.findById(id);
-        return ResponseEntity.ok(personaTaller);
+    public ResponseEntity<TipoMateriales> findById(@PathVariable Long id) {
+        TipoMateriales tipoMateriales = tipoMaterialesService.findById(id);
+        return ResponseEntity.ok(tipoMateriales);
     }
 
     
-    @ApiOperation(value = "Crea una personaTaller")
+    @ApiOperation(value = "Crea un tipoMateriales")
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody PersonaTaller personaTaller) {
+    public ResponseEntity<?> save(@RequestBody TipoMateriales tipoMateriales) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "PersonaTaller registrado correctamente");
-        result.put("data", personaTallerService.save(personaTaller));
+        result.put("message", "tipoMateriales registrado correctamente");
+        result.put("data", tipoMaterialesService.save(tipoMateriales));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
+    //a
 
     
-    @ApiOperation(value = "Modifica una personaTaller")
+    @ApiOperation(value = "Modifica un tipoMateriales")
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody PersonaTaller personaTaller) {
+    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @RequestBody TipoMateriales tipoMateriales) {
         HashMap<String, Object> result = new HashMap<>();
-        PersonaTaller data = personaTallerService.findById(id);
+        TipoMateriales data = tipoMaterialesService.findById(id);
         if (data == null) {
             result.put("success", false);
             result.put("message", "No existe registro con Id: " + id);
             return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
         }
         try {
-            personaTaller.setPeId(id);
-            personaTallerService.save(personaTaller);
+            tipoMateriales.setTmId(id);
+            tipoMaterialesService.save(tipoMateriales);
             result.put("success", true);
             result.put("message", "Datos actualizados correctamente.");
-            result.put("data", personaTaller);
+            result.put("data", tipoMateriales);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(new Exception(ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     
-    @ApiOperation(value = "Elimina una personaTaller")
+    @ApiOperation(value = "Elimina un tipoMateriales")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         HashMap<String, Object> result = new HashMap<>();
-    PersonaTaller data = personaTallerService.findById(id);
+    TipoMateriales data = tipoMaterialesService.findById(id);
     if(data == null){
         result.put("success", false);
-        result.put("message", "No existe personaTaller con id:" + id);
+        result.put("message", "No existe tipoMateriales con id:" + id);
   return new ResponseEntity <>(result, HttpStatus.NOT_FOUND);
     } else{
-  personaTallerService.deleteById(id);
+  tipoMaterialesService.deleteById(id);
             result.put("success", true);
             result.put("message", "Registro Eliminado correctamente");
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -105,3 +104,5 @@ public class PersonaTallerController {
     }
     
 }
+    
+

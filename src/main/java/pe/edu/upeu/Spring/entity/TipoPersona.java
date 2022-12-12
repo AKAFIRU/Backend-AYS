@@ -15,13 +15,14 @@ import lombok.Data;
 public class TipoPersona implements Serializable {
 
     @Id
-    @Column(name = "tipe_id")
+    @Column(name = "tp_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tipeId;
-
-    @Column(name = "tipe_nombre")
-    private String tipeNombre;
-
-    @Column(name = "tipe_descripcion")
-    private String tipeDescripcion;
+    private Long tpId;
+    
+    @Column(name = "tp_nombre")
+    private String tpNombre;
+    
+    @Column(name = "tp_des")
+    private String tpDesc;
+    
 }

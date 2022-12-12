@@ -18,28 +18,22 @@ import pe.edu.upeu.Spring.repository.PersonaRepository;
  * @author HP
  */
 @Service
-public class PersonaServiceImpl implements PersonaService {
+public class PersonaServiceImpl implements PersonaService{
 
 
 
-@Autowired   
-PersonaRepository personaRepository;
-
-@Override
-public List<Persona> findAll() {
+    @Autowired
+    PersonaRepository personaRepository;
+    
+    @Override
+    public List<Persona> findAll() {
         return (List<Persona>) personaRepository.findAll();
     }
-
 
     @Override
     public Persona findById(Long id) {
         return personaRepository.findById(id).orElse(null);
-    
     }
-    @Override
-    public Persona findByPersDni(String persDni) {
-        return personaRepository.findByPersDni(persDni);
-}
 
     @Override
     public Persona save(Persona persona) {
@@ -55,5 +49,5 @@ public List<Persona> findAll() {
     public void deleteById(Long id) {
         personaRepository.deleteById(id);
     }
+    
 }
-

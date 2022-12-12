@@ -4,16 +4,15 @@
  */
 package pe.edu.upeu.Spring.repository;
 
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.upeu.Spring.entity.Persona;
+import pe.edu.upeu.Spring.entity.TipoMateriales;
 
 /**
  *
  * @author HP
  */
 @Repository
-public interface PersonaRepository extends CrudRepository<Persona, Long>{
+public interface TipoMaterialesRepository extends CrudRepository<TipoMateriales, Long> {
     
 }
