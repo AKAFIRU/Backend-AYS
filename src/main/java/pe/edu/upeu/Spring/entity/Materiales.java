@@ -29,7 +29,11 @@ public class Materiales {
     @ManyToOne
     @JoinColumn(name = "ta_id")
     private Taller taller;
-    
+
+
+    @ManyToOne
+    @JoinColumn(name = "ca_id")
+    private TipoMateriales tipoMateriales;
     
 }
 

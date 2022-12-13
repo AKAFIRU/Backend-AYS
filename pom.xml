@@ -59,6 +59,10 @@
 
 
 
+<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
+       
+
+
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
 <dependency>
     <groupId>io.springfox</groupId>
